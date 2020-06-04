@@ -1,0 +1,239 @@
+/*
+migraciones son para modifircr la estructura no los datos
+metodos  son para modificar los datos eliminar etc, la base de datos
+db:rolback se elimina la migracion
+@variable  es disponible en otrp ventana y sin arroba no
+cada tabla tiene q tener un controlador 
+las consultas son atraves de los modelos
+
+action_text tiene editor y un lugar en donde se envua esto: action text se descarga en article rb :content y luego migararlas
+has_rich cuerpo enriquesido
+
+
+sqles un lenguaje de consultas y mysql es un sistema de datos para trabajar con las bases de datos
+base de datos relacionales
+persistem? si esta guardado en la base de datos
+reals new blog es para iniciar un proyecto
+el root path es la diagonal
+CRUD EES IUN MODULO DE CREAL ACTUALIX=ZAR LEER ELIMINAR
+:FIN SIMBOLO
+los parciales se apartan desde otra carpeta en los views y se diferencian_ por eso
+render es el metodo para desplegar el parcial y se pone la ruta de deonde proviene
+= no se coloca si no quieres que el resultado del siclo se imprima
+#variables locales por eso no se pone la @
+to: va a ir a un controlador:y una accion responden a un recurso: example to:user#edit user seria el controlador y user seria el recurso
+get es el recurso
+la base de datos es development.squile.3
+rails generate model Article title:string status:integer para el modelo siempre las consulatas a ellos  si hereda de APPLICATIONrECORD ya es un modelo
+En el modelo siempre va en singular article y en el contrlador va en plural 
+para crear un controlador en consola es rails generte controller Articles
+.rails generate controller Home index y sobre todo en el controlador debe estae home_contrler.rb
+y eso de arriva generra articles.controllers 
+posdata: cuando quieras ir por un modelo siempre tienes que ir por un controlador
+rails se basa e convensiones
+rails routs
+    #por el yield es que podemos haser html sin poner body ni head
+#root_path o bienvenidi
+reutilizar codigo SASS
+WEBPACK recarga tu pagina recompila los asets 
+
+<devise autenticacion de usuarios es devise es una gema para toda la autenticacio :bundle install y luego sigue ejecutar el generador de devisre
+rails generate devise:install
+.DEEVISE GENERA UN METODO QUE AGRAGA A LOS CONTRLADORES MUY IMPORTANTE QUE ES EL AUTENTICATION_USER!:
+class HomeController < ApplicationController
+  before_action :authenticate_user!
+  def index
+  end
+  
+end (DISE QUE ANTES DE CUALQUIER ACCION MANDE A LLAMAR AUTENTICATE Y LO Q DISE ES QUE SI HAY UN USUARIO DEJA PASAR LA VISTA LO DE EDIT 
+Y SI NO HAY UN USUARIO NO )
+
+PARA GENERAR UN REGISTRO DE INICION SECION DEBE SER RAILS GENERATE DEVISE USER:
+
+ejecutar un generador que se asocia a la autenticacion con un modelo es como la tabla en la cual se guarda todo los usuarios(registro y login)
+rails generate devise User o teacher etc para el devise
+>
+
+
+.las vistas tienen la estructura en aricles.html.erb
+se le pone en artcle.html.erb true si quieres que salga rojo o azu;l
+.para correr una migracion es rails db:migrate y al correr la migracion se crea una tabla
+.
+
+#HomeController se le pone en mayuscula y se le pone en minuscula en la ruta con la guion bajo
+  #lo que ase de una clase a un controlador es el ApplicationController
+  #o poner en la consola rails generate controller Home index
+
+  #desde que ip se esta logiando
+      #cuentas confirmadas
+.com user_signed_in? esto es para ver si hay alguien iniciado secion <%=link_to "Iniciar secion", new_user_session_path, class: "nav-link" %>
+es de dpende de que si sea get o delete
+
+.com current_user.email puedes acceder a todos los datos de schema
+before_action :autenticate_user! es como usar el user_signed_in? pero de que este es q si no tienes una autenticacion te manda al iniciar secion
+
+
+.se quieres decorar el devise debes generar la en las vistas rails generate devise:views
+
+
+
+
+
+.foreigin_key:true es optimizasion de la base de datos ademas es muy buena practica en 1 a muchos 
+
+.se le agrega default:1 cuando te salee en consola not colunm ya que ya tienes esa informacion en tu base de datos
+
+
+.
+ .se guarde quien esta creando el articulo
+ para saber quien es usuario es Article.last.user  y algo importante que current_user muestra quien inicio secion y user un ejemplo es que otro inisio secion
+
+ .@user.articles es decir quiero los articulos de un usuario
+ # en link_to va primero el link y a donde debe ir el link
+#link_to "gg" , :article
+
+.si accedes de current_user es el que a iniciado sesion pero si lo ases con user es el autor de otra cuenta 
+def from_author
+    @user= User.find(params[:user_id])
+    #from_user : para encontrar un usuario 
+#se le pone user_id por el routes
+
+al decir params([:article]) obtienes un hasch
+def article_parants
+    params.require(:article).permit(:title,:content)
+    #que tenga un parametro article
+end
+esto se llama parametros fuertes que cumm=plen la funcionalidad de seguridad para que alguien no pueda meter codigo de mas
+title: params[:article][:title],content: params[:article][:content] esto es reeplazado por lo de arriva
+y si le agregas un dato que no esta permitido te sale Unpermitted parameter: :status
+
+
+number_field es un control de numeros
+rest es la base de un proyecto y una arquitectura
+REST: rest es el medio de comunicacion con el servidor desde cliente, ademas resources :article es una buena practica de rest 
+es desir que rest es como se organizan las rutas  los controladores y modelos y tiene limitaciones como:
+ la arquitectura del cliente y servidor:la responsabilidad de cada uno
+el stateless: no existe contexto
+cacheability:algunas respuestas se guardan en cache
+que es sistema pueda estar basado encapas:cada capa tiene que tener una responsabilidad
+que poseen una  interfas uniforme:comunica la interfas entre el cliente y servidorp
+pueden enviar codigo on demand
+
+//resources genera todas las rutas comentadas
+  resources :articles do
+get "/user/:user_id", to: "articles#from_author" :on :colection esto ase que sea articles/user o on: :member que seria article/id/user
+  ya no se le pone articles porque se sobrentienede
+  end 
+
+  
+  scafold es una de las eramientas que rails posee
+  el scafold es un generador ademas genera un crud de un modelo :rails generate scaffold Category title color
+category es el modelo , lo que genera es un generador un modelo views modelos 
+
+dato importante si es title:string no es necesario poner string
+
+
+<muchos a muchos:
+.toda la modificacion de la estructura de la base de datos se hase atraves de las migrasiones para generar una migracion:
+rails generate migartion el nombre de add_user_id_to_articles este articles es el nomber de la tabla y asi ruby pueda saver 
+a que tabla se va a ejutar la migracion
+y luego viene el nombre del campo agregar que seria user:reference que es super importante o user_id:integer y luego ya los migras
+juntos 
+luego de eso viene la asociasion :
+ahora que ya esta asociada los articles con los usurios, vamos a pasar esta asociasion  a un modelo todo esto nos ofrese nuevos metodos y:
+belongs_to :user esto va en articles.rb porque tiene el
+ valor como id es decir articles le pertenece a usuarios y en user va has_many :articles el nombre del modelo pero en plural
+
+ahora lo que falta es la tabla sociativa : para esto solo necesitmos el modelo : 
+rails generate model HasCategory article:references category:references
+y luego de eso vas a migrar las migrasiones
+
+las asociaona has_categoris artilce.rb category.rb ademas el unirlo con has_many :has_categories esto genera
+muchos a muchos y asi ya esta configurada la tabla asosiativa
+
+grasias a refenses se pudo agregar solito el belongs_to
+
+
+una relacion muchos a muchos se logra a traves de una tabla sociativa has_categoris>
+
+RUBY:SPLIT(",")SEPRA DE UN ARREGLO
+
+class Article < ApplicationRecord: LOS MODELOS SON CLASES PORQUE ESTO ESTA HEREDANDODe el ORM: ApplicationRecord:base,
+Que esta en article.record_rb
+   ESTO SE PONE EN ARTCLE.RB :   attr_accessor :category_elements esta propiedad me permite lee y escribir
+
+CON HASCATEGORIES.COUNT PUEDES SABER CUANTOS ELEMTOS HAY , tambien puedes haser es Articles.find(25).categories
+
+def  como evitar que se creen duplicados : tabien puedes usar find_or_create_by() oooo
+unless HasCategory.where(article:self, category_id:category_id).any?
+HasCategory.create(article:self, category_id:category_id).any?
+
+end
+end
+
+
+
+con all puedes acceder a todos las categorias.
+
+RUBY SE BASA EN CONVENSION
+
+
+{MULTIPLE: TRUE } ESTO ES UNA CONFIGURACION DE HTML Y ADEMAS SIRVE PARA QUE MANDE MAS DE UN CHECKBOX Y ASI PUEDA MANDAR LOS RESULTADOS A UN ARREGLO
+LUEGO DE ESO SE PONE EL VALOR A RESIVIR QUE SERIA CATEGORY.ID Y SI QUIERES QUE ESTE CHEQUEADO SE LE PONE NIL
+
+
+
+ADEMAS ES IMPORTAMTE PARA LOS ESTRONG PARAMS NECESITA QUE SE LES DIGAS SI NECESITAS SI VA A SER UN ARREGLO
+
+lo borre de show de categorias:
+<div class="smaller-containe center-block">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @category.title %>
+</p>
+
+
+<p>
+  <strong>Color:</strong>
+  <%= @category.color %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+</div>
+
+
+nil es para ver si es nulo la variable
+emapaty? si es vasio para q retorne
+has_categories en un article devuelve los recursos que le pertenecen al articulo
+y where.not (te devuleve los elemntos que no coninsidan con lo que pongas aca)
+
+
+<
+<%= form_with(model: current_user, local: true) do |form| %>
+model current_user se le pone el registro que se va a querer modificar ,.local"true para q no tome lo de ajax 
+y se le coloca una variable y al medio se le coloca los controles
+<%= form-label :avatar%>
+el avatar es el atributo en donde se va acolocar la imagen
+
+<%= form.file_field :avatar%> esto es el control de archivos
+
+  resources :users, only: [:update] esto quiere decir q va a necesitar un controlador user
+   def update
+    current_user.update(user_params)
+    redirect_back(fallback_location: root_path)
+  end y este update lo q va aaser es actualizar el registro del usurio
+
+
+
+image_tag genera una etiqueta img para la imagen y la url_for es un metodo de rails que es el registro del archivo y se nos 
+va a dar una direccion que eso apunta a ese archivo
+
+<div>
+<%=link_to "inicio", root_path, class: "font"%>
+
+</div>
+>
+*/

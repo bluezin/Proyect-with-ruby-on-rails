@@ -1,0 +1,53 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+.field{
+    input{
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        margin-right: 0.5em;
+    }
+}
+
+.center-block{
+    margin: 0 auto;
+    
+}
+
+.smaller-containe{
+    width: 100%;
+    max-width: 350px;
+  
+}
+.colums{
+   margin-top: 7em;
+   
+}
+.padding{
+    margin-top: 1em;
+    padding: 6px 4px;
+}
+.margin-top{
+    margin-top: 1.5em;
+}
+.link{
+    color: black;
+}
+
+.font{
+    font-size: 39px;
+    text-align: center;
+    color: rgb(62, 178, 182);
+}
+.font1{
+    font-size: 39px;
+    text-shadow: 3px 2px 0 rgb(40, 126, 121);
+}
+.font2{
+border: solid lightskyblue;
+}
+
+.wit{
+    width: 300em;
+}
